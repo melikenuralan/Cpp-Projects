@@ -21,7 +21,7 @@ void appColor()//this function is basic template of library
     cout<<endl;
     for(int i=1;i<31;i++)
     {
-    	cout << char(223);
+    	cout << char(223);o
 	}
     cout <<char(219)<<"       WELCOME TO THE LIBRARY      "<<char(219);
 
