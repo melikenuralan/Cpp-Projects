@@ -1,0 +1,114 @@
+#include<iostream>
+#include <random>
+#include<ctime>
+using namespace std;
+
+	int Q_num = 1;
+	int correct = 0;
+	int wrong = 0;
+	
+	bool ask[10] = {true,true,true,true,true,true,true,true,true,true};
+	void display_random_question();
+	coid display();
+	void question(string question, string a,string b,string c,string d , char correct_answer);
+	void result();
+int main()
+{
+	display();
+	return 0;
+}
+
+void display()
+{
+	system("cls");
+	cout<<"Question Number : "<<Q_num<<"\t\tCorrect Answer : "<<correct<<"\t\tWrong Answers : "<<wrong<<endl<<endl;
+	display_random_question();
+}
+
+void display_random_questions()
+{
+	srand(time(0));
+	bool is_question_remaining = false;
+	for(int i=0 ;i<10;i++){if(ask[i]){
+		is_question_remaining = true;
+		break;
+	}
+	
+	}
+	while(is_question_remaining)
+	{
+		int no = rand() %10;
+		if(ask[no]){
+			ask[no]=false;
+			switch(no){
+				case 0:
+					question("which language supports the object oriented programming technique ?","C language","C++ language","cobal language","fortran language",'b');
+					break;
+				case 1:
+					question("what is variable ? ","A empty container in which we store data","box","data type","language",'a');
+					break;
+				case 2:
+					question("what is variable ? ","A empty container in which we store data","box","data type","language",'a');
+					break;
+				case 3:
+					question("what is variable ? ","A empty container in which we store data","box","data type","language",'a');
+					break;
+				case 4:
+					question("what is variable ? ","A empty container in which we store data","box","data type","language",'a');
+					break;
+				case 5:
+					question("what is variable ? ","A empty container in which we store data","box","data type","language",'a');
+					break;
+				case 6:
+					question("what is variable ? ","A empty container in which we store data","box","data type","language",'a');
+					break;
+				case 7:
+					question("what is variable ? ","A empty container in which we store data","box","data type","language",'a');
+					break;
+				case 8:
+					question("what is variable ? ","A empty container in which we store data","box","data type","language",'a');
+					break;
+				case 9:
+					question("what is variable ? ","A empty container in which we store data","box","data type","language",'a');
+					break;
+					
+					
+			}
+		}
+	}
+	result();
+}
+
+void result()
+{
+	system("cls");
+	cout<<"Total Question = "<<Q_num-1<<endl;
+	cout<<"Correct Answers = "<<correct<<endl;
+	cout<<"Wrong Answers = "<<wrong<<endl;
+	
+	if(correct>wrong)
+	cout<<"Result = PASS"<<endl;
+	else if(wrong>correct)
+	cout<<"Result = FAIL "<<endl;
+	else
+	cout<<"Result = TIE "<<endl;
+}
+
+void question(string question,string a,string b,string c,string d,char correct_answer)
+{
+cout<<question<<endl;
+cout<<"A.\t"<<a<<endl;
+cout<<"B.\t"<<a<<endl;
+cout<<"C.\t"<<a<<endl;
+cout<<"D.\t"<<a<<endl;
+char answer;
+cin>>answer;
+if(answer == correct_answer)
+	correct++;
+else
+	wrong++;
+Q_num++;
+
+display();
+	
+}
