@@ -33,7 +33,7 @@ bool exitProgram = false;
 	
 	void appColor()
 {
-    system("Color 0C");
+    system("Color 06");
     cout<<endl;
     for(int i=1;i<31;i++)
     {
