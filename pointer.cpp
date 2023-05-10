@@ -105,5 +105,44 @@ int main()
 
 
 -----------------------------------------------------------------------------
+REFERENCE
+-----------------------------------------------------------------------------
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int a=10;
+    int &r=a;
+    //when we change r or a both will be changed!!
+    r=25; //refererence dont consume memory it uses the same memory of a
+    cout<<a<<endl<<r<<endl;
+
+    
+
+    return 0;
+}
+-------------------------------------------------------------------------------
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int a=10;
+    int &r=a;
+    
+    int b=30;
+    r=b;//30 stored in r , r not nickname of b
+
+    cout<<a<<endl<<r<<endl;
+
+    
+
+    return 0;
+}
+-------------------------------------------------------------------------------
+ 
 
 
