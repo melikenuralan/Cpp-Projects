@@ -184,21 +184,21 @@ void design::welcome_frame()
     gotoxy(45, 13);
     cout << "WELCOMES    ";
 
-    int startX = 54;        // Başlangıç x koordinatı
-    int startY = 10;         // Başlangıç y koordinatı
-    int endY = 13;          // Bitiş y koordinatı
+    int startX = 54;        
+    int startY = 10;         
+    int endY = 13;          
 
      for (int y = startY; y <= endY; y++) {
-        gotoxy(startX, y - 1);  // Önceki konumu temizle
+        gotoxy(startX, y - 1);  
         cout << "     ";
 
-        gotoxy(startX, y);      // Yeni konuma git ve kelimeyi yazdır
+        gotoxy(startX, y);      
         cout << word;
 
         Sleep(100);            
 
         if (y != endY) {
-            gotoxy(startX, y);  // Yeni konumu temizle
+            gotoxy(startX, y);  
             cout << "     ";
         }
     }
