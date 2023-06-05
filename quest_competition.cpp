@@ -94,7 +94,6 @@ void result()
 	else
 		cout << "Result = TIE " << endl;
 }
-
 void question(string question, string a, string b, string c, string d, char correct_answer)
 {
 	cout << question << endl;
