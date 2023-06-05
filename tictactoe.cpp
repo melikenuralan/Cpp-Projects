@@ -181,6 +181,7 @@ int main()
         }
     }
 
+	
    if (token == 'x' && !tie)
 {
     system("Color 02");
