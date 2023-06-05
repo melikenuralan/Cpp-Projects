@@ -3,6 +3,7 @@
 #include<fstream>
 using namespace std;
 
+
 struct Pharmacy{
     char id;
     string name;
