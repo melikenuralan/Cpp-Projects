@@ -8,7 +8,6 @@
 #include <ctime>
 using namespace std;
 void gotoxy(int x,int y);
-void flow(const char* ch);
 void frame();
 void flowBinary();
 void add(const char* filename);
@@ -189,13 +188,7 @@ void gotoxy(int x, int y) {
     coordinates.Y = y;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coordinates);
 }
-void flow(const char* ch) {
-    const char* str = ch;
-    for (int i = 0; i < strlen(str); i++) {
-        Sleep(20);
-        cout << str[i];
-    }
-}
+
 
 
 int main() {
