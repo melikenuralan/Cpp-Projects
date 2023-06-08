@@ -1,0 +1,348 @@
+//Employee Management project in c++
+#include<iostream>
+#include<conio.h>
+#include<windows.h>
+using namespace std;
+
+int i=0;
+void gotoxy(int x, int y);
+void appTemplate();
+void choiceHandle();
+void insert();
+void search();
+void update();
+void deleteRecord();
+void display();
+void choiceHandle();
+void appTemplate();
+struct Employee{
+	int id;
+	float salary;
+	string name,address,phone,department;
+};Employee E[25];
+
+void insert(){//insert new employee record
+	system("cls");
+	appTemplate();
+	cout<<"\n\n INSERT EMPLOYEE RECORD\n\n";
+	cout<<". . . . . . . . . . . . . . . . . . . . . . .";
+	
+	
+	cout<<char(175)<<"\n\n EMPLOYEE ID ->";
+	cin.ignore();
+	cin>>E[i].id;
+	
+	cout<<"- - - - - - - - - - - - - - - - - - - - - - - ";
+	
+	cout<<char(175)<<"\n\n EMPLOYEE [NAME] ->";
+	cin.ignore();
+	getline(cin,E[i].name);
+	
+	cout<<"- - - - - - - - - - - - - - - - - - - - - - - ";
+	
+	cout<<char(175)<<"\n\n EMPLOYEE [ADDRESS] ->";
+	cin.ignore();
+	getline(cin,E[i].address);
+	
+	cout<<"- - - - - - - - - - - - - - - - - - - - - - - ";
+	
+	cout<<char(175)<<"\n\n EMPLOYEE [PHONE] ->";
+
+	cin>>E[i].phone;
+	
+	cout<<"- - - - - - - - - - - - - - - - - - - - - - - ";
+	
+	cout<<char(175)<<"\n\n EMPLOYEE [DEPARTMENT] ->";
+	cin.ignore();
+	getline(cin,E[i].department);
+	
+	cout<<"- - - - - - - - - - - - - - - - - - - - - - - ";
+	
+	
+	cout<<char(175)<<"\n\n EMPLOYEE [SALARY]->";
+	cin>>E[i].salary;
+	
+i++;
+cout<<"- - - - - - - - - - - - - - - - - - - - - - - ";
+cout<<"\n\n***EMPLOYEE RECORD INSERTED***";
+}
+
+void search(){
+	system("cls");
+	appTemplate();
+	if(i==0){
+	system("Color 04");
+	cout<<"\n\n DATABASE IS EMPTY";
+	} else {
+		int t_id,found=0;
+		cout<<"\n\n ENTER EMPLOYEE ID FOR SEARCH ->";
+		cin>>t_id;
+		
+		for(int a=0;a<i;a++){
+		
+			if(t_id==E[a].id){
+				
+				system("Color 02");
+				cout<<"\n\n EMPLOYEE NAME -> "<<E[a].name;
+				cout<<"\n\n EMPLOYEE ADDRESS -> "<<E[a].address;
+				cout<<"\n\n EMPLOYEE PHONE -> "<<E[a].phone;
+				cout<<"\n\n EMPLOYEE DEPARTMENT -> "<<E[a].department;
+				cout<<"\n\n EMPLOYEE SALARY -> "<<E[a].salary;
+				found++;
+			
+		}
+		
+	}
+			
+	if(found==0){
+		
+	system("Color 04");
+	cout<<"\n\n ***EMPLOYEE ID NOT FOUND !!***";
+}
+
+}
+	
+	
+}
+void update(){
+	system("cls");
+	appTemplate();
+	if(i==0){
+	system("Color 04");
+	cout<<"\n\n DATABASE IS EMPTY";
+	} else {
+		
+		int t_id,found=0;    
+		             
+		cout<<"\n\n ENTER EMPLOYEE ID FOR UPDATE ->";
+		cin>>t_id;
+		
+		for(int a=0;a<i;a++){
+		
+			if(t_id==E[a].id){
+				
+	cout<<"\n\n ENTER EMPLOYEE [NAME] ->";
+	cin.ignore();
+	getline(cin,E[i].name);
+	
+	cout<<"\n\n ENTER EMPLOYEE [ADDRESS] ->";
+	cin.ignore();
+	getline(cin,E[i].address);
+	
+	cout<<"\n\n ENTER EMPLOYEE [PHONE] ->";
+	cin>>E[i].phone;
+	
+	cout<<"\n\n ENTER EMPLOYEE [DEPARTMENT] ->";
+	cin.ignore();
+	getline(cin,E[i].department);
+	
+	cout<<"\n\n ENTER EMPLOYEE [SALARY]->";
+	cin>>E[i].salary;
+	
+	cout<<"\n\n EMPLOYEE SALARY -> "<<E[a].salary;
+				found++;
+			
+		}
+		
+	}
+	
+	if(found==0){
+		
+		system("Color 04");
+		cout<<"\n\n ***EMPLOYEE ID NOT FOUND !!***";
+	}
+	else{
+	system("Color 02");
+	cout<<"\n\n *** RECORD UPDATED SUCCEFULLY ***";
+		 	
+	}
+}
+	
+}
+
+
+void deleteRecord(){
+	
+	system("cls");
+	appTemplate();
+	
+	
+	
+	if(i==0){
+	system("Color 04");
+	cout<<"\n\n DATABASE IS EMPTY";
+	}
+	
+	 else {
+		int t_id,found=0;
+		cout<<"\n\n ENTER EMPLOYEE ID FOR DELETE ->";
+		cin>>t_id;
+		
+		for(int a=0;a<i;a++){
+		
+			if(t_id==E[a].id){
+				for(int k=a;k<i-1;k++){
+					
+					E[k].id = E[k+1].id;
+					E[k].name = E[k+1].name;
+					E[k].address = E[k+1].address;
+					E[k].phone = E[k+1].phone;
+					E[k].department = E[k+1].department;
+					E[k].salary = E[k+1].salary;
+					
+
+				}
+				i--;
+				system("Color 02");
+				cout<<"\n\n*** RECORD DELETED SUCCESSFULLY ***";
+			
+				found++;
+				break;
+		}
+		
+	}
+	
+	if(found==0){
+		
+		system("Color 04");
+		cout<<"\n\n ***EMPLOYEE ID NOT FOUND !!***";
+	}
+}
+	
+	
+}
+
+
+
+	
+void choiceHandle(){
+	p:
+	system("cls");
+	appTemplate();
+	int choice;
+	
+	  for (int i = 4; i < 26; i++) {
+        gotoxy(3, i);
+        cout << ".";
+        gotoxy(39, i);
+        cout << ".";
+    }
+	gotoxy(4, 4);
+	cout<<" . . . . . . . . . . . . . . . . . ";
+	gotoxy(4, 7);
+	cout<<" 1-INSERT EMPLOYEE";
+	gotoxy(4, 10);
+	cout<<" 2-SEARCH EMPLOYEE";
+	gotoxy(4, 13);
+	cout<<" 3-UPDATE EMPLOYEE";
+	gotoxy(4, 16);
+	cout<<" 4-DELETE EMPLOYEE";
+	gotoxy(4, 19);
+	cout<<" 5-SHOW ALL EMPLOYEE";
+	gotoxy(4, 22);
+	cout<<" 6-EXIT\n";
+	gotoxy(4, 25);
+	cout<<" . . . . . . . . . . . . . . . . . . ";
+	cout<<"\n\n ENTER YOUR CHOICE -> ";
+	cin>>choice;
+//	getch();
+//	goto p;
+	switch(choice){
+		
+		case 1:
+			insert();
+			break;
+		case 2:
+			search();
+			break; 
+		case 3: update();
+			break; 
+		case 4: deleteRecord();
+			break;
+		case 5: display();
+			break;
+		
+		case 6:
+			exit(0);
+			break;
+	default: 
+	system("Color 04");
+	cout<<"\n\n INVALID OPTION...PLEASE TRY AGAIN";
+		break;
+			
+			
+	}
+	getch();
+	goto p;
+	
+	
+}
+void display(){
+	
+	system("cls");
+	appTemplate();
+	if(i==0){
+	system("Color 04");
+	cout<<"\n\n DATABASE IS EMPTY";
+	} else {
+	
+		
+		for(int a=0;a<i;a++){
+		
+		
+				
+			system("Color 02");
+			
+			cout<<"\n\n EMPLOYEE ID -> "<<E[a].id;
+			cout<<"\n\n EMPLOYEE NAME -> "<<E[a].name;
+			cout<<"\n\n EMPLOYEE ADDRESS -> "<<E[a].address;
+			cout<<"\n\n EMPLOYEE PHONE -> "<<E[a].phone;
+			cout<<"\n\n EMPLOYEE DEPARTMENT -> "<<E[a].department;
+			cout<<"\n\n EMPLOYEE SALARY -> "<<E[a].salary;
+			cout<<" . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
+			
+		
+		
+	}
+			
+	
+
+}
+	
+	
+}
+
+
+void appTemplate()
+{
+    system("Color 06");
+    cout<<endl;
+  
+    for(int i=1;i<31;i++)
+    {
+    	cout << char(223);
+    
+	}
+    cout <<char(219)<<"    E M P L O Y E E   M A N A G E M E N T  S Y S T E M    "<<char(219);
+
+    for(int j=1;j<31;j++)
+    {
+    	cout << char(223);
+    
+	}
+	cout<<endl;
+	cout<<endl;
+	cout<<endl;
+}
+
+int main(){
+choiceHandle();
+
+}
+
+void gotoxy(int x, int y) {
+    COORD coordinates;
+    coordinates.X = x;
+    coordinates.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coordinates);
+}
