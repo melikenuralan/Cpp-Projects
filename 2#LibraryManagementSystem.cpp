@@ -549,7 +549,7 @@ void Login::security() {
             
             cin >> newPasswordConfirm;
             
-            if (newPassword == newPasswordConfirm) {
+            if (newPassword == newPasswordConfirm && newPassword.length()>=8) {
                 
                 ofstream newRecordsFile("new_records.txt");
                 
