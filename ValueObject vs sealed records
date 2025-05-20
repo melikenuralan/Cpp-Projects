@@ -1,0 +1,102 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UserService.Domain.Common;
+
+namespace UserService.Domain.ValueObjects
+{
+    public class FullName : ValueObject
+    {
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
+
+        private FullName() { } // EF için
+
+        public FullName(string firstName, string lastName)
+        {
+            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
+                throw new ArgumentException("Ad ve soyad boş olamaz.");
+
+            FirstName = firstName;
+            LastName = lastName;
+        }
+
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return FirstName;
+            yield return LastName;
+        }
+
+        public override string ToString() => $"{FirstName} {LastName}";
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace UserService.Domain.Common
+{
+    public abstract class ValueObject
+    {
+        protected abstract IEnumerable<object> GetEqualityComponents();
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is null || obj.GetType() != GetType()) return false;
+
+            ValueObject other = (ValueObject)obj;
+            return GetEqualityComponents().SequenceEqual(other.GetEqualityComponents());
+        }
+        public override int GetHashCode()
+        {
+            return GetEqualityComponents()
+                .Aggregate(1, (current, obj) =>
+                    HashCode.Combine(current, obj?.GetHashCode() ?? 0));
+        }
+
+        public static bool operator ==(ValueObject a, ValueObject b)
+        {
+            return a?.Equals(b) ?? b is null;
+        }
+
+        public static bool operator !=(ValueObject a, ValueObject b)
+        {
+            return !(a == b);
+        }
+    }
+}
+ using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using UserService.Domain.Common;
+
+namespace UserService.Domain.ValueObjects
+{
+    public sealed record Email
+    {
+        public string Value { get; }
+
+        public Email(string value)
+        {
+            if (string.IsNullOrEmpty(value)) throw new ArgumentNullException("Email cannot be empty");
+            if (!IsValid(value)) throw new ArgumentException("Invalid email format.");
+
+            Value = value.ToLower();
+        }
+        private static bool IsValid(string email)
+        {
+            return Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        }
+        public override string ToString() => Value;
+
+        public static implicit operator string(Email email) => email.Value;
+    }
+}
